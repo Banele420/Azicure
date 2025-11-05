@@ -12,7 +12,8 @@ build/
 logs/
 *.log
 data/*
-!.gitkeep
+!data/versions
+!data/versions/.gitkeep
 .vscode/
 .idea/
 htmlcov/

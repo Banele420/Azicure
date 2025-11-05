@@ -1,5 +1,5 @@
 include README.md LICENSE
-recursive-include configs *.json *.key
+recursive-include configs *.json *.key *.txt
 recursive-include docs *.md *.svg
 recursive-include data .gitkeep
 recursive-include src/azicure/admin/templates *.html
