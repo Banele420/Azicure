@@ -5,14 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "azicure"
 dynamic = ["version"]
-description = "Secure document management prototype with AES-GCM encryption, TOTP MFA, device whitelisting, tamper detection, and FastAPI service."
+description = "Azicure v0.2 — Trust Infrastructure Release"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Azicure Team" }]
-keywords = ["security", "encryption", "MFA", "TOTP", "FastAPI", "forensics", "tamper"]
+keywords = ["security", "encryption", "MFA", "TOTP", "FastAPI", "PKI", "TPM", "HSM"]
 classifiers = [
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
@@ -22,7 +22,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Topic :: Security :: Cryptography",
-  "Environment :: Console",
+  "Environment :: Web Environment",
   "Framework :: FastAPI"
 ]
 dependencies = [
@@ -33,11 +33,14 @@ dependencies = [
   "uvicorn==0.30.6",
   "pydantic==2.9.2",
   "loguru==0.7.2",
-  "requests==2.32.3"
+  "requests==2.32.3",
+  "python-jose[cryptography]==3.3.0",
+  "passlib[bcrypt]==1.7.4",
+  "jinja2==3.1.3"
 ]
 
 [project.optional-dependencies]
-dev = ["pytest==8.3.3", "twine>=5.0.0", "build>=1.2.1"]
+dev = ["pytest==8.3.3", "pytest-cov>=5.0.0", "flake8>=7.1.0", "twine>=5.0.0", "build>=1.2.1"]
 
 [project.scripts]
 azicure = "azicure.cli:main"
@@ -46,13 +49,6 @@ azicure = "azicure.cli:main"
 package-dir = {"" = "src"}
 packages = { find = { where = ["src"], include = ["azicure*"] } }
 
-[tool.setuptools.package-data]
-azicure = ["../configs/*.json", "../data/.gitkeep"]
-
-[tool.setuptools.dynamic]
-# (not used, but placeholder if you want to read version from file later)
-
-
 [tool.setuptools_scm]
 write_to = "src/azicure/_version.py"
-fallback_version = "0.1.0"
+fallback_version = "0.2.0"
