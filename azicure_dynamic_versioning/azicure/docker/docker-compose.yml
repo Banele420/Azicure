@@ -1,0 +1,11 @@
+services:
+  azicure-api:
+    build: ..
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../.env
+    volumes:
+      - ../configs:/app/configs
+      - ../logs:/app/logs
+      - ../data:/app/data

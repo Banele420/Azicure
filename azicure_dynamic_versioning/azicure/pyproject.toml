@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=69", "wheel", "setuptools_scm[toml]>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "azicure"
+dynamic = ["version"]
+description = "Secure document management prototype with AES-GCM encryption, TOTP MFA, device whitelisting, tamper detection, and FastAPI service."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Azicure Team" }]
+keywords = ["security", "encryption", "MFA", "TOTP", "FastAPI", "forensics", "tamper"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security :: Cryptography",
+  "Environment :: Console",
+  "Framework :: FastAPI"
+]
+dependencies = [
+  "cryptography==43.0.1",
+  "pyotp==2.9.0",
+  "python-dotenv==1.0.1",
+  "fastapi==0.115.2",
+  "uvicorn==0.30.6",
+  "pydantic==2.9.2",
+  "loguru==0.7.2",
+  "requests==2.32.3"
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.3", "twine>=5.0.0", "build>=1.2.1"]
+
+[project.scripts]
+azicure = "azicure.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = { find = { where = ["src"], include = ["azicure*"] } }
+
+[tool.setuptools.package-data]
+azicure = ["../configs/*.json", "../data/.gitkeep"]
+
+[tool.setuptools.dynamic]
+# (not used, but placeholder if you want to read version from file later)
+
+
+[tool.setuptools_scm]
+write_to = "src/azicure/_version.py"
+fallback_version = "0.1.0"
