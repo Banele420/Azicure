@@ -40,4 +40,4 @@ write_to = "src/azicure/_version.py"
 fallback_version = "0.4.0"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["azicure_dynamic_versioning/azicure/src"]
