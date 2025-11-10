@@ -54,8 +54,7 @@ def main():
     elif args.cmd == "totp":
         if args.totp_cmd == "init":
             uri = init_secret(args.account)
-            print("Scan this URI in your authenticator app:
-", uri)
+            print("Scan this URI in your authenticator app:", uri)
         elif args.totp_cmd == "verify":
             ok = totp_verify(args.secret, args.token)
             print("Valid" if ok else "Invalid")
